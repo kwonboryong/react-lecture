@@ -21,18 +21,24 @@ function nullish() {
   // 참고: https://mzl.la/3vQUYin | https://mzl.la/3PXiOQ9
 }
 
+
 function optionalChaining() {
   const topic = {
     _title: '매년 업데이트 되는 ECMAScript',
+
     getTitle() {
       return this._title;
     },
+
     setTitle(value) {
       this._title = value;
     },
   };
 
-  if (topic && typeof topic === 'object' && !Array.isArray(topic)) {
+
+  // null이 아니고 배열[]이 아닌 객체(object)를 찾기 위한 조건문
+  // - typeof는 null, [], {} => object로 보여주기 때문
+  if (topic !== null && typeof topic === 'object' && !Array.isArray(topic)) {
     let title, name;
 
     if (typeof topic.getTitle === 'function') {
@@ -49,9 +55,8 @@ function optionalChaining() {
 
   // 🔶 optional chaining 코드를 사용해 조건 처리하세요.
   // 참고: https://mzl.la/3xx6Arc
-
-  console.log(topic.getTitle());
-  console.log(topic.getName());
+  console.log(topic?.getTitle?.());
+  console.log(topic?.getName?.());
 }
 
 function run() {

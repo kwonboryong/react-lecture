@@ -4,9 +4,9 @@
 // - const를 사용하는 이유
 // --------------------------------------------------------------------------
 
-var numbers = [3, 6, 9, 12, 23];
+const numbers = [3, 6, 9, 12, 23];
 
-for (var i = 0, l = numbers.length; i < l; i += 1) {
+for (let i = 0, l = numbers.length; i < l; i += 1) {
   console.log({ [i]: numbers[i] });
 }
 
