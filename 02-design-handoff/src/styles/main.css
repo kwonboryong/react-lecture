@@ -12,22 +12,21 @@ body {
   align-items: center;
 
   padding: 0.75rem;
+  margin-bottom: 0.25rem;
   
 
-  img {
-    width: 50px;
-    height: 50px;
-    background-color: red;
+  img, svg {
+    width: 4rem;
+    height: 4rem;
 
-    margin-right: 1.25rem;
+    margin-right: 20px;
   }
 
   p {
     color: #FFF;
-    font-family: Pretendard;
+    font-family: 'Pretendard';
     font-size: 1.25rem;
-    font-style: normal;
-    font-weight: 400;
     line-height: 120%;
   }
 }
+
