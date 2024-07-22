@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko-KR">
-
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -19,42 +18,42 @@
       href="./styles/style/main.css"
     />
   </head>
-
   <body>
-    <div>
-      <div class="frame">
-        <img
-          src="./styles/assets/Architecture.png"
-          alt="첫 번째 건물 이미지"
-        />
-        <p>History of Architecture</p>
-      </div>
+    <section>
+      <h1 class="sr-only">Architecture</h1>
+      <ul aria-label="건물 리스트">
+        <li class="architecture-item">
+          <img
+            src="./styles/assets/Architecture.png"
+            alt="첫 번째 건물 이미지: 역사적 건축물"
+          />
+          <p class="architecture-item__title">History of Architecture</p>
+        </li>
 
-      <div class="frame">
-        <img
-          src="./styles/assets/Architecture2.png"
-          alt="두 번째 건물 이미지"
-        />
-        <p>Building design</p>
-      </div>
+        <li class="architecture-item">
+          <img
+            src="./styles/assets/Architecture2.png"
+            alt="두 번째 건물 이미지: 건물 디자인"
+          />
+          <p class="architecture-item__title">Building design</p>
+        </li>
 
-      <div class="frame">
-        <img
-          src="./styles/assets/Architecture3.png"
-          alt="세 번째 건물 이미지"
-        />
-        <p>Graphics</p>
-      </div>
+        <li class="architecture-item">
+          <img
+            src="./styles/assets/Architecture3.png"
+            alt="세 번째 건물 이미지: 건축 그래픽"
+          />
+          <p class="architecture-item__title">Graphics</p>
+        </li>
 
-      <div class="frame">
-        <img
-          src="./styles/assets/Architecture4.png"
-          alt="네 번째 건물 이미지"
-        />
-        <p>Climatology</p>
-      </div>
-
-    </div>
+        <li class="architecture-item">
+          <img
+            src="./styles/assets/Architecture4.png"
+            alt="네 번째 건물 이미지: 기후학적 건축"
+          />
+          <p class="architecture-item__title">Climatology</p>
+        </li>
+      </ul>
+    </section>
   </body>
-
 </html>

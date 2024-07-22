@@ -1,27 +1,39 @@
 body {
   margin: 0;
-  user
+  user-select: none;
 }
 
-.frame {
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  border: 0;
+  clip: rect(0 0 0 0);
+}
+
+.architecture-item {
   width: 18.5rem;
   height: 4rem;
   padding: 12px;
   margin-bottom: 4px;
-  
+
   display: flex;
   flex-direction: row;
   align-items: center;
-  
+
   background: #141515;
-  
-  img, svg {
+
+  img {
     width: 4rem;
     height: 4rem;
     margin-right: 20px;
   }
 
-  p {
+  .architecture-item__title {
     color: #FFF;
     font-family: 'Pretendard';
     font-size: 1.25rem;
