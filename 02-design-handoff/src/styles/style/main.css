@@ -1,24 +1,23 @@
 body {
   margin: 0;
+  user
 }
 
 .frame {
   width: 18.5rem;
   height: 4rem;
-  background: black;
-
+  padding: 12px;
+  margin-bottom: 4px;
+  
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  padding: 0.75rem;
-  margin-bottom: 0.25rem;
   
-
+  background: #141515;
+  
   img, svg {
     width: 4rem;
     height: 4rem;
-
     margin-right: 20px;
   }
 
