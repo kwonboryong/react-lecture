@@ -1,12 +1,17 @@
 // --------------------------------------------------------------------------
 // Template literal
-// - 데이터 + 템플릿 = 마크업 스트링
+// - 데이터 + 템플릿(JS) = 마크업 스트링 (웹 컴포넌트, 리액트)
 // - 템플릿 리터럴 구문을 사용해 마크업 스트링 생성
 // --------------------------------------------------------------------------
 
+<<<<<<< HEAD
 // 데이터(상태: data)
 // - 타입을 지정하기 위해 const 사용
 // - 클라이언트가 요청 => 서버 => 응답(JSON)
+=======
+// 데이터(상태: state)
+// 클라이언트 요청 => 서버 -> 클라이언트 응답 -> JSON
+>>>>>>> main
 const koreanFoods = {
   caption: "한식 메뉴",
   rows: [
@@ -35,6 +40,7 @@ function renderTable(data) {
 
 
 // 🔶 renderTableString 함수를 작성하세요.
+<<<<<<< HEAD
 // React 식: js 안에서 마크업 구성
 function renderTableString(data) {
   const markup = /* html */ `
@@ -54,6 +60,33 @@ function renderTableString(data) {
 }
 
 function run() {
+=======
+// JavaScript 파일 안에서 마크업(markup: 구조 설계) 구성
+function renderTableString(data /* { caption: string, rows: [] } */) {
+  const markup = /* html */ `
+    <table class="table">
+      <caption class="sr-only">${data.caption}</caption>
+      ${data.rows.reduce(function (htmlString, rowItem) {
+        return (
+          htmlString +
+          /* html */ `
+          <tr>
+            <th>${rowItem.headline}</th>
+            <td>${numberWithComma(rowItem.content)}원</td>
+          </tr>
+        `
+        );
+      }, '')}
+    </table>
+  `;
+
+  return removeSpaceHTMLString(markup);
+}
+
+function run() {
+  const renderedResult1 = renderTable(koreanFoods);
+  console.log(renderedResult1);
+>>>>>>> main
   const renderedResult = renderTableString(koreanFoods);
   return renderedResult;
 }
