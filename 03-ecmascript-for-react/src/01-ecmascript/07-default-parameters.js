@@ -4,7 +4,7 @@
 // 🔶 기본값 매개변수를 활용하고, nullish 연산자를 제거하세요.
 // 참고: https://mzl.la/3JkRZBH
 const randomNumber = (min = 0, max = 10) => {
-  // nullish (null | undefined)
+  // nullish 연산자 사용 (null | undefined)
   // min = min ?? 0; /* function parameter default value */
   // max = max ?? 10;
 

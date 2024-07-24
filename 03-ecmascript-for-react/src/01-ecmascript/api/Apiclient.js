@@ -1,3 +1,5 @@
+
+// ES5 스타일 생성자 함수와 모듈 패턴 (IIFE)
 export const ApiClient = (function () {
   // Class
   // constructor function
@@ -39,6 +41,8 @@ export const ApiClient = (function () {
   return ApiClient;
 })();
 
+
+// ES6 클래스 문법
 export class ApiClientClass {
   // 비공개 멤버
   #endpoint;

@@ -72,9 +72,8 @@ function practice2() {
 
 // practice2();
 
-// Async Await
-// 참고: https://mzl.la/49EvJxn
 
+// Async Await -----------------------------------------------
 // const practice3 = async () => {
 async function practice3() {
   // 🔶 비동기 함수를 사용해 delayPromise 함수가 1초마다 로그를 남기도록 작성합니다.
@@ -100,9 +99,8 @@ async function practice3() {
 
 // practice3();
 
-// --------------------------------------------------------------------------
-// Promise.all, Promise.race
 
+// Promise.all, Promise.race -------------------------------------
 const MAX_TIMEOUT = 2000;
 
 const promise1 = () =>
@@ -137,6 +135,7 @@ Promise.all([promise1(), promise2()])
     console.error(error);
   });
 
+  
 // Promise.race
 // [promise1, promise2, promise3, ..., promiseN].then(() => { ... })
 // 참고: https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/race

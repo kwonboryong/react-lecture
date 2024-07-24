@@ -8,7 +8,6 @@
 import { ApiClientClass as ApiClient } from './api/ApiClient.js';
 
 // ES 2015
-
 const todosService = new ApiClient(
   'https://jsonplaceholder.typicode.com/todos'
 );
