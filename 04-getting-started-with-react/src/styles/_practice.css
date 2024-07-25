@@ -34,6 +34,14 @@ body {
       opacity: 0.4;
     }
 
+    > img{
+      --size:64px;
+      inline-size: var(--size);
+      block-size: var(--size);
+      border-radius: var(--radius-md,6px);
+      border: 3px solid var(--white ,#fff);
+      
+    }
     .content {
       flex-grow: 1;
       color: var(--white, #fff);

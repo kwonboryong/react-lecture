@@ -13,14 +13,14 @@
 
 class SortableList extends HTMLElement {
   // 클래스 멤버
-  static DRAGGING_CLASSNAME = 'dragging';
+  static DRAGGING_CLASSNAME = "dragging";
 
   // 프라이베이트 멤버
   #list = null;
   #items = [];
 
   #init() {
-    console.log('초기화');
+    console.log("초기화");
 
     // 구조 분해 할당
     const { DRAGGING_CLASSNAME } = SortableList;
@@ -31,7 +31,7 @@ class SortableList extends HTMLElement {
     // 이벤트 바인딩(연결)
 
     // 1. 리스트 이벤트 핸들링
-    list.addEventListener('dragover', (e) => {
+    list.addEventListener("dragover", (e) => {
       e.preventDefault();
 
       const draggedItem = items.find((item) =>
@@ -49,22 +49,22 @@ class SortableList extends HTMLElement {
 
     // 2. 리스트 아이템 순환, 각 아이템 이벤트 핸들링
     items.forEach((item) => {
-      item.setAttribute('draggable', true);
+      item.setAttribute("draggable", true);
 
-      item.addEventListener('dragstart', (e) => {
+      item.addEventListener("dragstart", (e) => {
         e.currentTarget.classList.add(DRAGGING_CLASSNAME);
       });
 
-      item.addEventListener('dragend', (e) => {
+      item.addEventListener("dragend", (e) => {
         e.currentTarget.classList.remove(DRAGGING_CLASSNAME);
       });
 
       const handleButton = item.querySelector('[data-role="handle"]');
 
       if (handleButton) {
-        handleButton.addEventListener('keyup', (e) => {
+        handleButton.addEventListener("keyup", (e) => {
           switch (e.key) {
-            case 'ArrowUp':
+            case "ArrowUp": {
               const prevItem = item.previousElementSibling;
               if (prevItem) {
                 prevItem.before(item);
@@ -73,8 +73,9 @@ class SortableList extends HTMLElement {
               }
 
               break;
+            }
 
-            case 'ArrowDown':
+            case "ArrowDown": {
               const nextItem = item.nextElementSibling;
               if (nextItem) {
                 nextItem.after(item);
@@ -83,6 +84,7 @@ class SortableList extends HTMLElement {
               }
 
               break;
+            }
           }
         });
       }
@@ -101,7 +103,7 @@ class SortableList extends HTMLElement {
       <ul class="list"></ul>
     `;
 
-    this.#list = this.querySelector('.list');
+    this.#list = this.querySelector(".list");
 
     // 전개 구문
     this.#list.append(...this.#items);
@@ -110,8 +112,8 @@ class SortableList extends HTMLElement {
   }
 
   disconnectedCallback() {
-    console.log('unmounted');
+    console.log("unmounted");
   }
 }
 
-customElements.define('sortable-list', SortableList);
+customElements.define("sortable-list", SortableList);

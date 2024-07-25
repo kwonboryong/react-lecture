@@ -24,7 +24,6 @@ list.addEventListener("dragover", (e) => {
   list.insertBefore(draggedItem, replaceItem);
 });
 
-<<<<<<< HEAD
 const listItems = Array.from(list.querySelectorAll("li"));
 
 listItems.forEach((item) => {
@@ -35,33 +34,15 @@ listItems.forEach((item) => {
   });
 
   item.addEventListener("dragend", (e) => {
-=======
-const listItems = Array.from(list.querySelectorAll('li'));
-
-listItems.forEach((item) => {
-  item.setAttribute('draggable', true);
-
-  item.addEventListener('dragstart', (e) => {
-    e.currentTarget.classList.add(DRAGGING_CLASSNAME);
-  });
-
-  item.addEventListener('dragend', (e) => {
->>>>>>> main
     e.currentTarget.classList.remove(DRAGGING_CLASSNAME);
   });
 
   const handleButton = item.querySelector('[data-role="handle"]');
 
   if (handleButton) {
-<<<<<<< HEAD
     handleButton.addEventListener("keyup", (e) => {
       switch (e.key) {
         case "ArrowUp": {
-=======
-    handleButton.addEventListener('keyup', (e) => {
-      switch (e.key) {
-        case 'ArrowUp':
->>>>>>> main
           const prevItem = item.previousElementSibling;
           if (prevItem) {
             prevItem.before(item);
@@ -70,13 +51,8 @@ listItems.forEach((item) => {
           }
 
           break;
-<<<<<<< HEAD
         }
         case "ArrowDown": {
-=======
-
-        case 'ArrowDown':
->>>>>>> main
           const nextItem = item.nextElementSibling;
           if (nextItem) {
             nextItem.after(item);
@@ -85,10 +61,7 @@ listItems.forEach((item) => {
           }
 
           break;
-<<<<<<< HEAD
         }
-=======
->>>>>>> main
       }
     });
   }

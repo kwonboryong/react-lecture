@@ -42,6 +42,7 @@ listItems.forEach((item) => {
       switch (e.key) {
         case "ArrowUp": {
           const prevItem = item.previousElementSibling;
+
           if (prevItem) {
             list.insertBefore(item, prevItem);
             // 해당 핸들에 초첨
@@ -52,6 +53,7 @@ listItems.forEach((item) => {
 
         case "ArrowDown": {
           const nextItem = item.nextElementSibling;
+          
           if (nextItem) {
             nextItem.after(item);
             e.currentTarget.focus();
