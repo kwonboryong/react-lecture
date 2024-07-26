@@ -1,7 +1,6 @@
 import React from 'https://esm.sh/react';
 import { createRoot } from 'https://esm.sh/react-dom';
-import { ArchitectureListPage } from './pages/ArchitectureListPage.js';
-import Avatar from './pages/AvatarPageList.js';
+import AvatarListPage from './pages/AvatarPageList.js';
 
 // 리액트 앱을 렌더링 할 DOM 요소 참조
 const container = document.getElementById('react-app');
@@ -16,12 +15,8 @@ if (container) {
 
   // 실습 2
   createRoot(container).render(
-    React.createElement(Avatar)
+    React.createElement(AvatarListPage)
   );
-
-
-
-
 
 
 } else {
