@@ -1,13 +1,9 @@
+import DataBinding from './data-binding.jsx';
+
 function JSX_Markup() {
   return (
     <dl className="descriptionList">
-      <dt>데이터 바인딩(data binding)</dt>
-      <dd>
-        <p>상태 메시지(status message)를 연결해 화면에 출력합니다.</p>
-        <span className="status">
-          {/* statusMessage 값을 화면에 표시합니다. (랜덤 표시도 도전!) */}
-        </span>
-      </dd>
+      <DataBinding />
       <dt>조건부 렌더링(conditional rendering)</dt>
       <dd>
         <p>이미지 타입(image type)에 따라 렌더링 여부를 결정합니다.</p>
