@@ -193,3 +193,11 @@ abbr[title] {
     }
   }
 }
+
+
+/* utilities */
+
+.hidden,
+[hidden] {
+  display: none !important;
+}

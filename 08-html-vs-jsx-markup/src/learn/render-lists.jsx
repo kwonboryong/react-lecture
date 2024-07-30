@@ -1,5 +1,18 @@
-function RenderLists() {
-  const renderList = () => {};
+import { array } from "../utils/prop-types";
+
+function RenderLists({ items }) {
+
+  const renderList = () => {
+    // 리스트 렌더링 결과 반환
+    // - [ ] Array.prototype.forEach?
+    // - [x] Array.prototype.map?
+
+    return items.map((item) => {
+      console.log(item);
+      return <li key={item}>{item}</li>;
+      //
+    });
+  };
 
   return (
     <>
@@ -26,3 +39,14 @@ function RenderLists() {
 }
 
 export default RenderLists;
+
+
+// 속성 props 검사
+RenderLists.propTypes = {
+  items: array
+
+  // items(props, propName, componentName) {
+  //   const propValue = props[propName];
+  //   const propType = typeOf(propValue);
+  // }
+}

@@ -1,8 +1,17 @@
 import { randomNumber } from '../utils';
+import PropTypes from '../utils/prop-types';
 
 function DataBinding({ statusMessages }) {
   // [미션] 랜덤 로직을 작성해서 임의의 상태 메시지가 표시되도록 설정합니다.
+  // JavaScript 프로그래밍
   // Math.random() / Math.floor() / Math.round()
+
+  // 리액트에서 이렇게 하는 거 아닙니다!!!
+  // 전달된 props의 각 속성 타입 검사
+  // if (!Array.isArray(statusMessages)) {
+  //   console.warn('statusMessages가 배열이 아니야! 다시 확인해~');
+  //   return null;
+  // }
 
   const statusMessage =
     statusMessages[randomNumber(0, statusMessages.length - 1)];
@@ -22,3 +31,13 @@ function DataBinding({ statusMessages }) {
 }
 
 export default DataBinding;
+
+// 컴포넌트 속성 타입 검사
+// Prop Types Validation
+
+// 리액트가 제공하는 방법
+// Component.propTypes
+
+DataBinding.propTypes = {
+  statusMessages: PropTypes.array,
+};
