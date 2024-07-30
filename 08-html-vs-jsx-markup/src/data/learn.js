@@ -2,7 +2,7 @@ export const imageType = 'react';
 
 export const isShowReactImage = true;
 
-export const statusMessage = [
+export const statusMessages = [
   '⌛️ 대기',
   '⏳ 로딩 중...',
   '✅ 로딩 성공!',
