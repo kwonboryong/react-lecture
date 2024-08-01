@@ -1,5 +1,5 @@
+import { StatusMessagesType } from '../@types/types.d';
 import { randomNumber } from '../utils';
-import PropTypes from '../utils/prop-types';
 
 function DataBinding({ statusMessages }) {
   // [미션] 랜덤 로직을 작성해서 임의의 상태 메시지가 표시되도록 설정합니다.
@@ -14,7 +14,7 @@ function DataBinding({ statusMessages }) {
   // }
 
   const statusMessage =
-    statusMessages[randomNumber(0, statusMessages.length - 1)];
+    statusMessages[randomNumber(0, statusMessages?.length - 1)];
 
   return (
     <>
@@ -39,5 +39,14 @@ export default DataBinding;
 // Component.propTypes
 
 DataBinding.propTypes = {
-  statusMessages: PropTypes.array,
+  // 필수 속성 설정 시, isRequired 추가
+  // statusMessages: array.isRequired,
+
+  // 특정 타입만 허용하는 배열 검사
+  // Typed Array
+  // [TS] string[] -> [props-types] arrayOf(string)
+  // [TS] number[] -> [props-types] arrayOf(number)
+  // [TS] boolean[] -> [props-types] arrayOf(bool)
+  // statusMessages: arrayOf(string).isRequired, // string[] or Array<string>
+  statusMessages: StatusMessagesType.isRequired,
 };

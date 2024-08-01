@@ -1,18 +1,13 @@
-import { array } from "../utils/prop-types";
+import { Fragment } from 'react';
+import { PropTypes } from '@/utils';
 
-function RenderLists({ items }) {
-
-  const renderList = () => {
-    // 리스트 렌더링 결과 반환
-    // - [ ] Array.prototype.forEach?
-    // - [x] Array.prototype.map?
-
-    return items.map((item) => {
-      console.log(item);
-      return <li key={item}>{item}</li>;
-      //
-    });
+function RenderLists({ statusMessages, reactLibrary }) {
+  const renderList = ({ reverse = false } = {}) => {
+    const list = reverse ? statusMessages.toReversed() : statusMessages;
+    return list.map((item) => <li key={item.toString()}>{item}</li>);
   };
+
+  const reactLibraryEntries = Object.entries(reactLibrary);
 
   return (
     <>
@@ -31,7 +26,12 @@ function RenderLists({ items }) {
           렌더링합니다.
         </p>
         <dl className="reactLibrary">
-          {/* 여기서 설명 목록으로 리스트 렌더링 합니다. */}
+          {reactLibraryEntries.map(([key, value]) => (
+            <Fragment key={key}>
+              <dt>{key}</dt>
+              <dd>{value.toString()}</dd>
+            </Fragment>
+          ))}
         </dl>
       </dd>
     </>
@@ -40,13 +40,7 @@ function RenderLists({ items }) {
 
 export default RenderLists;
 
-
-// 속성 props 검사
 RenderLists.propTypes = {
-  items: array
-
-  // items(props, propName, componentName) {
-  //   const propValue = props[propName];
-  //   const propType = typeOf(propValue);
-  // }
-}
+  statusMessages: PropTypes.array,
+  reactLibrary: PropTypes.object,
+};
