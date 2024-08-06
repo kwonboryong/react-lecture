@@ -6,7 +6,7 @@
 //   5. [-] 컴포넌트 테스트 (SKIP)
 
 import { useState } from 'react';
-import Avatar from '@/components/Avatar';
+import Avatar from '@/components/Avatar/Avatar';
 import { avatarsData } from '@/data/avatars';
 
 function AvatarListPage() {

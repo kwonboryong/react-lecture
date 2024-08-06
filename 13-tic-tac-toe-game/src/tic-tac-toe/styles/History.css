@@ -1,0 +1,26 @@
+.History {
+  margin-top: 38px;
+  min-width: 100px;
+
+
+  ol {
+    margin: 0;
+    padding-left: 0;
+    display: flex;
+    flex-flow: column;
+    gap: 8px;
+  }
+
+
+  li {
+    list-style-type: decimal-leading-zero;
+  }
+
+  button {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    border: 0;
+    border-radius: 4px;
+    padding: 0.4em 0.8em;
+  }
+}

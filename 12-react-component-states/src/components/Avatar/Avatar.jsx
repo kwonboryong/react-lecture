@@ -1,5 +1,6 @@
 import { string, number, oneOf } from 'prop-types';
 import { STATUS } from '@/constants/STATUS';
+import './Avatar.css';
 
 Avatar.propTypes = {
   name: string.isRequired,

@@ -1,0 +1,12 @@
+.Square {
+  width: var(--square-size);
+  height: var(--square-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border: 0.1px solid var(--primary-color);
+  padding: 0;
+  color: var(--primary-color);
+  font-size: 20px;
+}
