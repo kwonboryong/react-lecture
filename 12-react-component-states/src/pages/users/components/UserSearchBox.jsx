@@ -2,25 +2,30 @@ import { useId } from 'react';
 import { string, func } from 'prop-types';
 import './UserSearchBox.css';
 
+// 타입 검사
 UserSearchBox.propTypes = {
   searchTerm: string.isRequired,
   onSearch: func, // optional
 };
 
+
 function UserSearchBox({ searchTerm, onSearch }) {
+  // UsersPage의 input 검색어와 검색 이벤트 핸들러 함수 가져옴
+
+  // 접근성을 위한 고유 ID 생성(useID API)
   const id = useId();
 
+
+  // 검색 버튼 이벤트 핸들러1
   const handleSearch = () => {
-    // Side Effects
-    // DOM 접근, 속성 값 읽기
     const input = document.getElementById(id);
+
+    // input 검색어의 양 옆 공백 제거
+    // - input.value === defaultValue(= searchTerm)
     const value = input.value.trim();
 
+    // 검색 이벤트 핸들러 함수2에 input 검색어(value) 전달
     onSearch?.(value);
-    // if (value.length > 0) {
-    // } else {
-    //   alert('검색어를 입력해주세요.');
-    // }
   };
 
   return (
@@ -30,9 +35,6 @@ function UserSearchBox({ searchTerm, onSearch }) {
         <input
           id={id}
           defaultValue={searchTerm}
-          // value={searchTerm}
-          // onChange={handleChange}
-          // readOnly
           type="search"
           placeholder="사용자 이름 입력"
         />

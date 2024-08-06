@@ -1,5 +1,6 @@
 import { UserType } from '@/@types/type.d';
 
+// 타입 검사
 UserDetail.propTypes = {
   user: UserType.isRequired,
 };
@@ -10,10 +11,10 @@ function UserDetail({ user }) {
       <strong>{user.name}</strong>{' '}
       <span>
         <a
-          style={{ color: '#aaa', textDecoration: 'none' }}
           href={`mailto:${user.email}`}
+          style={{ color: '#aaa', textDecoration: 'none' }}
         >
-          {user.email}
+          {user.email} ({user.city})
         </a>
       </span>
     </li>
