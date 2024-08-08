@@ -5,8 +5,10 @@ body {
   color: var(--forground);
 
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: start;
+
+  padding-inline-start: 100px;
 }
 
 .architectures {

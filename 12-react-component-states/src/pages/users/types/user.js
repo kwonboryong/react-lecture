@@ -1,4 +1,4 @@
-import { arrayOf, exact, shape, number, string } from 'prop-types';
+import { exact, number, string, arrayOf } from 'prop-types';
 
 export const UserType = exact({
   id: number.isRequired,
@@ -17,17 +17,3 @@ export const UserType = exact({
 });
 
 export const UsersListType = arrayOf(UserType);
-
-export const NoteType = shape({
-  id: number,
-  title: string.isRequired,
-  content: string.isRequired,
-  userId: number.isRequired,
-  createdAt: string,
-  updatedAt: string,
-  expand: {
-    user: UserType,
-  },
-});
-
-export const NoteListType = arrayOf(NoteType);

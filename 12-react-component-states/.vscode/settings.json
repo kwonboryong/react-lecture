@@ -109,7 +109,7 @@
 
   // TypeScript 설정
   "typescript.autoClosingTags": true,
-  "typescript.format.enable": false,
+  "typescript.format.enable": true,
   "typescript.validate.enable": true,
   "typescript.check.npmIsInstalled": true,
   "typescript.updateImportsOnFileMove.enabled": "always",

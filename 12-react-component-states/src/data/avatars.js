@@ -1,4 +1,9 @@
-import { STATUS } from '@/constants/STATUS';
+export const STATUS = {
+  offline: 'offline',
+  online: 'online',
+  dontDisturb: 'dont-disturb',
+  away: 'away',
+};
 
 export const avatarsData = [
   {
