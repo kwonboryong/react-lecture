@@ -19,9 +19,9 @@ import {
 } from './constants';
 import History from './components/History/History';
 import Board from './components/Board/Board';
+import Reset from './components/Reset/Reset';
 import S from './Game.module.css';
 import './styles/main.css';
-import Reset from './components/Reset/Reset';
 
 function Game() {
   // [게임 상태] --------------------------------------------------------------
@@ -61,6 +61,7 @@ function Game() {
   // [게임 상태 업데이트 기능] ----------------------------------------------------
 
   // 게임 진행 함수
+  // - 특정 위치에 사용자가 말을 놓을 때 호출
   const handlePlayGame = (index) => () => {
 
     // 다음 게임의 인덱스 -----------------------------------------------
@@ -82,18 +83,25 @@ function Game() {
 
     // 게임 히스토리에 기록 추가 -------------------------------------------------------
 
-    // 현재 게임판 정보 저장 ['🍟', ..., 🤡', null]
+    // 다음 상태의 게임판을 정의
+    // - 현재 게임판 정보 저장 ['🍟', ..., 🤡', null]
+    // - 플레이어의 이동을 기록, 게임의 다음 상태를 정의
     const nextSquares = currentSquares.map((square, idx) => {
+
       return idx === index ? nextPlayer : square;
+      // 사용자가 클릭한 위치(index)에 해당하는 칸을 업데이트
+      // 해당 위치에 현재 플레이어의 기호를 설정
     });
 
 
-    // 게임을 진행한 회차들을 잘라서 배열로 저장 [ [null, ..., null], ['one', ..., null] ] 
+    // 게임의 각 턴마다의 상태를 저장
+    // - 게임을 진행한 회차들을 잘라서 배열로 저장 [ [null, ..., null], ['one', ..., null] ] 
     // - 게임의 히스토리(기억) 또한 되돌려야 함
     // - 선택된 게임의 인덱스 정보를 사용해 게임 히스토리를 잘라야 한다.
     const nextGameHistory = [
+      // 배열 결합
       ...gameHistory.slice(0, nextGameIndex),
-      nextSquares, // 현재 게임판 정보
+      nextSquares, // 현재 게임판 정보(사용자가 마지막으로 클릭한 위치의 상태가 업데이트된 게임판 상태를 포함)
     ];
 
     setGameHistory(nextGameHistory);
@@ -104,6 +112,7 @@ function Game() {
   const handleTimeTravel = (index) => {
 
     // 되돌리고 싶은 시간의 기억으로 게임 진행을 (인덱스를) 업데이트 요청
+    // - 원하는 인덱스의 게임으로 업데이트
     setGameIndex(index);
   };
 
