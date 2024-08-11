@@ -14,30 +14,36 @@ import { OneOfPlayerListType, WinnerInfoType } from '@/tic-tac-toe/types/type.d'
 import Square from '../Square/Square';
 import S from './Squares.module.css';
 
+// 타입 검사
 Squares.propTypes = {
   squares: OneOfPlayerListType.isRequired,
   winnerInfo: WinnerInfoType,
   onPlay: func,
 };
 
+
 // 상태를 가지지 않는(Stateless) 컴포넌트
 function Squares({ squares, winnerInfo, onPlay }) {
+  
+  // 리스트 렌더링
   return (
     <div className={S.component}>
-      {/* 리액트 (JSX) 마크업 : 리스트 렌더링 */}
+
       {squares.map((square, index) => {
-        // 배경 색칠 공부를 위한 스타일 객체를 정의해봐요!
+
+        // 배경 색칠을 위한 스타일 객체
         const winnerStyles = {
           backgroundColor: null,
         };
 
-        // 리액트~ 게임 승자가 있나요?
-        // winnerInfo는 null 또는 { winner, condition } 둘 중 하나!
+
+        // 게임 승자가 있는 경우
+        // - winnerInfo는 null 또는 { winner, condition } 둘 중 하나!
         if (winnerInfo) {
-          // 오호? 승자가 있군요! 승자의 조건을 알려주세요!
+          // 게임 승자의 조건 저장하기
           const [x, y, z] = winnerInfo.condition;
 
-          // 그럼 승자의 스퀘어(말판)에 색칠을 할께요!
+          // 그럼 승리한 스퀘어(말판) 색칠하기
           if (index === x || index === y || index === z) {
             winnerStyles.backgroundColor = WINNERS_COLOR;
           }

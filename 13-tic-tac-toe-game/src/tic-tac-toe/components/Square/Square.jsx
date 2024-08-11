@@ -13,6 +13,7 @@
 import { func, node } from 'prop-types';
 import S from './Square.module.css';
 
+// 타입 검사
 Square.propTypes = {
   children: node,
   onPlay: func,
@@ -20,13 +21,13 @@ Square.propTypes = {
 
 // 상태를 가지지 않는(Stateless) 컴포넌트
 function Square({ children, onPlay, ...restProps }) {
-  // [파생된 상태]
+  // 이미 말이 있는 칸에는 더 이상 액션 X
   const isDisabled = !!children;
 
   return (
     <button
       className={S.component}
-      onClick={onPlay}
+      onClick={onPlay} // Game 컴포넌트의 handlePlayGame 함수
       disabled={isDisabled}
       {...restProps}
     >
