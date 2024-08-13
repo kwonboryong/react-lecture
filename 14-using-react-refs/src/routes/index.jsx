@@ -5,16 +5,17 @@ import MotionOneTimeline from './motion-one-timeline';
 import MotionOneInView from './motion-one-in-view';
 import MotionOneScroll from './motion-one-in-scroll';
 import MotionOneStagger from './motion-one-stagger';
-import Home from './home/Home';
+import Home from './home';
 
-// 경로의 집합
-// - 어떤 경로에 어떤 컴포넌트를 렌더링할 것인지 설정
+// 경로 집합
+// 어떤 경로에 어떤 컴포넌트를 렌더링 할 것인가 설정
 const routes = [
   {
-    title: '리액트로 만드는 싱글 페이지 애플리케이션',
+    title: '싱글 페이지 애플리케이션',
     path: '/',
     element: <Home />,
   },
+  // Route Object { title, path, element }
   {
     title: '리-렌더 없이 기억',
     path: '/remember-without-re-render',

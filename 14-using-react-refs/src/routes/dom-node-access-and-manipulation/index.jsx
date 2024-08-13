@@ -20,7 +20,6 @@ import forceMageCover from './assets/force_mage-cover.jpg';
 import forceMageTitle from './assets/force_mage-title.png';
 import forceMageCharacter from './assets/force_mage-character.webp';
 
-// 데이터 집합
 const LINK_LIST = [
   {
     id: 1,

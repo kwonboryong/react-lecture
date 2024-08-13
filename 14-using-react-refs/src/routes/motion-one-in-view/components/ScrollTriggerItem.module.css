@@ -1,4 +1,5 @@
 .component {
+
   scroll-snap-align: start;
 
   user-select: none;

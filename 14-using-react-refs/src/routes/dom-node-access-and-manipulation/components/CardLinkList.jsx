@@ -3,7 +3,6 @@ import { CardLinkListType } from '../types/CardLinkList';
 import CardLinkItem from './CardLinkItem';
 import S from './CardLinkList.module.css';
 
-// 타입 검사
 CardLinkList.propTypes = {
   list: CardLinkListType.isRequired,
   usingPopup: bool,

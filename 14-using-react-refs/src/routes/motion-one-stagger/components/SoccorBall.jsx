@@ -1,21 +1,11 @@
-import { func, number, string } from 'prop-types';
+/* eslint-disable react/prop-types */
+import { forwardRef } from 'react';
 import S from './SoccorBall.module.css';
 
-SoccorBall.propTypes = {
-  size: number,
-  color: string,
-  moundedRef: func,
-};
-
-function SoccorBall({
-  size = 40,
-  color = '#450fbf',
-  moundedRef,
-  ...restProps
-}) {
+function SoccorBall({ size = 40, color = '#450fbf', ...restProps }, ref) {
   return (
     <svg
-      ref={moundedRef}
+      ref={ref}
       className={S.component}
       viewBox="-105 -105 210 210"
       width={size}
@@ -63,4 +53,4 @@ function SoccorBall({
   );
 }
 
-export default SoccorBall;
+export default forwardRef(SoccorBall);

@@ -9,7 +9,7 @@
   background-color: #e8702a;
   backdrop-filter: blur(4px);
   transform-origin: left center;
-  transform: scaleX(0.01); /* 0 → 1 */
+  transform: scaleX(0); /* 0 → 1 */
 }
 
 .output {
