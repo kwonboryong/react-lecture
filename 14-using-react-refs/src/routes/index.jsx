@@ -1,5 +1,6 @@
 import RememberWithoutReRender from './remember-without-re-render';
 import DOMNodeAccessAndManipulation from './dom-node-access-and-manipulation';
+import UsingImperativeHandle from './using-imperative-handle';
 import MotionOneAnimate from './motion-one-animate';
 import MotionOneTimeline from './motion-one-timeline';
 import MotionOneInView from './motion-one-in-view';
@@ -25,6 +26,11 @@ const routes = [
     title: 'DOM 노드 접근/조작',
     path: '/dom-node-access-and-manipulation',
     element: <DOMNodeAccessAndManipulation />,
+  },
+  {
+    title: '명령형 핸들 노출',
+    path: '/using-imperative-handle',
+    element: <UsingImperativeHandle />,
   },
   {
     title: '모션원 animate()',
