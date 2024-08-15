@@ -12,26 +12,13 @@ import SoccorBall from './components/SoccorBall';
 import S from './style.module.css';
 
 function MotionOneStagger() {
+  // 애니메이션할 공의 개수를 정의
   const [balls] = useState(Array(6).fill(null));
 
-  // const handleAnimateBallsUsingTestId = () => {
-  //   // 사커볼 객체 참조
-  //   const balls = Array.from(
-  //     document.querySelectorAll('[data-testid="soccor-ball"]')
-  //   );
+  // DOM 요소를 저장하는 데 사용
+  const soccorBallsRef = useRef(null); 
 
-  //   if (balls.length > 0) {
-  //     // animate()
-  //     animate(
-  //       balls,
-  //       { x: [0, 400, 0], rotate: [0, 360, -360 * 2] },
-  //       { duration: 2, delay: stagger(0.3) }
-  //     );
-  //   }
-  // };
-
-  const soccorBallsRef = useRef(null); // { current: null }
-
+  // soccorBallsRef.current가 존재하지 않을 경우, 새로운 Map 객체를 생성하여 반환
   const getMap = () => {
     if (!soccorBallsRef.current) {
       soccorBallsRef.current = new Map();
@@ -40,12 +27,15 @@ function MotionOneStagger() {
     return soccorBallsRef.current;
   };
 
+
+  // 애니메이션을 시작하는 함수
   const handleAnimateBalls = () => {
     // Map 활용 예시 코드 (공식 문서에서 기술하는 방법)
     const map = getMap();
     const mapArray = Array.from(map.values());
 
     if (mapArray.length > 0) {
+
       animate(
         mapArray,
         { x: [0, 400, 0], rotate: [0, 360, -360] },
@@ -55,33 +45,20 @@ function MotionOneStagger() {
         }
       );
     }
-
-    // Array 활용 예시 코드
-    // const soccorBalls = Array.from(new Set(soccorBallsRef.current));
-
-    // if (soccorBalls.length > 0) {
-    //   animate(
-    //     soccorBalls,
-    //     { x: [0, 400, 0], rotate: [0, 360, -360] },
-    //     {
-    //       delay: stagger(0.3),
-    //       duration: 2,
-    //     }
-    //   );
-    // }
   };
 
+  // SoccorBall 컴포넌트가 마운트되거나 언마운트될 때 호출
   const mountedCallback = (index, el) => {
-    // Map 활용
     const map = getMap();
 
     if (el) {
+      // el이 존재하면 index와 el 쌍을 Map에 추가
       map.set(index, el);
+
     } else {
+      // el이 없으면 Map에서 해당 index를 삭제
       map.delete(index);
     }
-
-    // Array 활용
     // 참조 객체의 current 값에 담긴 객체 (얼마든지 수정)
     // const soccorBalls = soccorBallsRef.current;
     // soccorBalls.push(soccorBallElement);
@@ -125,6 +102,9 @@ function MotionOneStagger() {
         {balls.map((color, index) => {
           return (
             <SoccorBall ref={mountedCallback.bind(null, index)} key={index} />
+            // SoccorBall이 DOM에 마운트될 때 mountedCallback 함수를 호출하여 해당 요소의 참조를 Map 객체에 저장
+            // - mountedCallback 함수의 this 컨텍스트를 null로 설정하고, 첫 번째 인자로 index를 전달하는 새로운 함수를 생성
+            // - SoccorBall 요소가 마운트될 때 호출된다.
           );
         })}
       </div>

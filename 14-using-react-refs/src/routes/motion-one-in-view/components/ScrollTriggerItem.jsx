@@ -3,6 +3,7 @@ import { inView, timeline } from 'motion';
 import { exact, number, string } from 'prop-types';
 import S from './ScrollTriggerItem.module.css';
 
+// 타입 검사
 ScrollTriggerItem.propTypes = {
   item: exact({
     id: number.isRequired,
@@ -11,14 +12,18 @@ ScrollTriggerItem.propTypes = {
   }).isRequired,
 };
 
+
 function ScrollTriggerItem({ item }) {
   const pRef = useRef(null);
 
   const setScrollTrigger = (element) => {
-    // 문서에 inView() 함수를 적용할 요소가 있을 경우
+
     if (element) {
+      // 문서에 inView() 함수를 적용할 요소가 있을 경우
+
       // 스크롤 트리거 설정
       inView(element, (/* info */ { target }) => {
+
         // 타임라인 애니메이션 설정
         const animation = timeline(
           [

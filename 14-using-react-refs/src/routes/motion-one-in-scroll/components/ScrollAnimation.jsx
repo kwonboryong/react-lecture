@@ -11,6 +11,8 @@ function ScrollAnimation() {
     <section className={S.component}>
       <h2 className="sr-only">스크롤 트리거 애니메이션</h2>
       <ProgressBar containerSelector={`.${S.component} ul`} />
+      {/* S.component 클래스 이름을 가진 아래의 ul 태그를 선택 */}
+      
       <ul>
         {images.map((item) => (
           <ScrollItem key={item.id} item={item} />

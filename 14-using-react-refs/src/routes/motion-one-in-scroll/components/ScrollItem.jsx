@@ -1,6 +1,7 @@
 import { exact, number, string } from 'prop-types';
 import S from './ScrollItem.module.css';
 
+// 타입 검사
 ScrollTriggerItem.propTypes = {
   item: exact({
     id: number.isRequired,
@@ -8,6 +9,7 @@ ScrollTriggerItem.propTypes = {
     text: string.isRequired,
   }).isRequired,
 };
+
 
 function ScrollTriggerItem({ item }) {
   return (
