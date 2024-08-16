@@ -19,6 +19,7 @@
   .description {
     display: flex;
     flex-flow: column;
+    align-items: start;
     gap: 0.3rem;
     margin-inline-end: 24px;
     margin-block-end: 24px;

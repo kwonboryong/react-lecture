@@ -1,7 +1,8 @@
 // --------------------------------------------------------------------------
-// ✅ 오늘 할 일 (Today Do it) 실습
+// ✅ 오늘 할 일 (Today Do it) 과제 수행
 // --------------------------------------------------------------------------
-// - [ ] Figma 오늘 할 일 UI 디자인을 분석합니다. (https://오늘할일.lrl.kr)
+// - [ ] "오늘 할 일" UI 디자인 해설 (Figma URL : https://오늘할일.lrl.kr)
+// - [ ] "오늘 할 일" UI 디자인을 분석합니다.
 // - [ ] Today Do it 앱 컴포넌트 트리를 구성합니다.
 // - [ ] Today Do it 앱에서 관리되어야 할 상태를 선언합니다.
 // - [ ] Pocketbase 솔루션을 사용해 백엔드 환경을 구성합니다.
@@ -11,7 +12,11 @@
 import S from './TodayDoit.module.css';
 
 function TodayDoit() {
-  return <div className={S.component}></div>;
+  return (
+    <div className={S.component}>
+      <p>Today Do it (4주차 주말 마지막 과제 수행)</p>
+    </div>
+  );
 }
 
 export default TodayDoit;

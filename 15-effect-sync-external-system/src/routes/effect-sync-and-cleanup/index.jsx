@@ -1,17 +1,17 @@
 import { useState } from 'react';
+import ClockOnOff from './components/ClockOnOff';
 import PrintMousePosition from './components/PrintMousePosition';
 import UselessCheckbox from './components/UselessCheckbox';
-import ClockOnOff from './components/ClockOnOff';
 import S from './style.module.css';
 
 const SUBJECTS = {
-  MOUNSE: '마우스 위치 추적',
+  MOUSE: '마우스 위치 추적',
   CLOCK: '시계 ON/OFF',
   CHECKBOX: '쓸모없는 체크박스',
 };
 
 function EffectSyncAndCleanup() {
-  const [subject, setSubject] = useState(SUBJECTS.MOUNSE);
+  const [subject, setSubject] = useState(SUBJECTS.MOUSE);
 
   const [isClockOn, setIsClockOn] = useState(false);
 
@@ -19,7 +19,7 @@ function EffectSyncAndCleanup() {
 
   switch (subject) {
     default:
-    case SUBJECTS.MOUNSE:
+    case SUBJECTS.MOUSE:
       renderSubjectComponent = <PrintMousePosition />;
       break;
     case SUBJECTS.CLOCK:
@@ -51,8 +51,8 @@ function EffectSyncAndCleanup() {
       <nav className={S.nav}>
         <button
           type="button"
-          className={getActiveClassName(SUBJECTS.MOUNSE)}
-          onClick={selectSubject(SUBJECTS.MOUNSE)}
+          className={getActiveClassName(SUBJECTS.MOUSE)}
+          onClick={selectSubject(SUBJECTS.MOUSE)}
         >
           마우스 위치 추적
         </button>

@@ -1,4 +1,9 @@
-import TodayDoit from './components/TodayDoit';
+// --------------------------------------------------------------------------
+// ✅ 백엔드 환경과 리액트 앱 동기화
+// --------------------------------------------------------------------------
+
+import DataFetching from './components/DataFetchingWithUseImmer';
+import DataMutation from './components/DataMutation';
 
 function SyncBackend() {
   return (
@@ -63,7 +68,11 @@ function SyncBackend() {
         <p>이후 강사와 함께 실습하며 주요 개념을 정리합니다.</p>
       </div>
 
-      <TodayDoit />
+      <h2 className="headline2">데이터 패칭</h2>
+      <DataFetching />
+
+      <h2 className="headline2">데이터 뮤테이션</h2>
+      <DataMutation />
     </main>
   );
 }
