@@ -4,3 +4,5 @@
 node_modules
 build
 dist
+pocketbase
+__hooks__

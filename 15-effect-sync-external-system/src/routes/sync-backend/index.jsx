@@ -69,9 +69,11 @@ function SyncBackend() {
       </div>
 
       <h2 className="headline2">데이터 패칭</h2>
+      <p>서버에 데이터 요청/응답 (읽기)</p>
       <DataFetching />
 
       <h2 className="headline2">데이터 뮤테이션</h2>
+      <p>서버의 데이터 변경 요청/응답 (생성/수정/삭제)</p>
       <DataMutation />
     </main>
   );
