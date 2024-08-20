@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useImmer } from 'use-immer';
-import { exact, string } from 'prop-types';
 import S from './DataFetching.module.css';
 import LoadingMessage from './LoadingMessage';
 import PrintError from './PrintError';

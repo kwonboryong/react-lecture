@@ -10,6 +10,8 @@ function GlobalNav() {
     { path: '/scroll-trigger-effect', text: '스크롤 트리거 이펙트' },
     { path: '/sync-backend', text: '백엔드 환경 동기화' },
     { path: '/check-on-offline', text: '온/오프라인 체크' },
+    { path: '/data-fetching', text: '훅을 사용한 데이터 패칭' },
+    { path: '/counter-app', text: '카운터 앱 (useCounter)' },
   ]);
 
   return (

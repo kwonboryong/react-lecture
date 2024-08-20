@@ -23,7 +23,7 @@ export default useDocumentTitle;
 // 2-1. useLayoutEffect의 이펙트의 클린업 함수
 // 2-2. useLayoutEffect의 이펙트 콜백 함수
 
-// 브라우저 페인팅 시점
+// 브라우저 페인팅 시점r
 
 // 2-3. useEffect의 이펙트의 클린업 함수
 // 2-4. useEffect의 이펙트 콜백 함수

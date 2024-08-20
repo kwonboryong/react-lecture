@@ -1,34 +1,24 @@
 import { useEffect, useRef, useState } from 'react';
 import { animate, spring } from 'motion';
+import useStateWithCallback from '@/hooks/useStateWithCallback';
 import { getRandomMinMax } from '@/utils';
 import S from './Peekaboo.module.css';
+import useInView from '@/hooks/useInView';
 
 function Peekaboo() {
   const [sections] = useState(Array(9).fill(null));
-
-  const [peekaboo, setPeekaboo] = useState(false);
-
   const [randomIndex] = useState(() => {
-    const min = 1;
+    const min = 4;
     const max = sections.length;
     const randomIndex = getRandomMinMax(min, max);
 
     return randomIndex;
   });
 
-  const peekabooRef = useRef(null);
-
-  const renderPeekaboo = (idx) =>
-    idx === randomIndex ? (
-      <span ref={peekabooRef} className={S.peekaboo}>
-        👻
-      </span>
-    ) : null;
-
-  useEffect(() => {
+  const [, setPeekaboo] = useStateWithCallback(false, (nextPeekaboo) => {
     const peekabooCharacter = peekabooRef.current;
 
-    if (peekaboo) {
+    if (nextPeekaboo) {
       animate(
         peekabooCharacter,
         { x: [1000, 0], opacity: [0, 1] },
@@ -40,7 +30,9 @@ function Peekaboo() {
     } else {
       animate(peekabooCharacter, { x: [0, 1000], opacity: [0, 1] });
     }
-  }, [peekaboo]);
+  });
+
+  const peekabooRef = useRef(null);
 
   useEffect(() => {
     const targetIndex = randomIndex - 1;
@@ -62,7 +54,7 @@ function Peekaboo() {
     return () => {
       intersectionObserver.unobserve(targetSectionElement);
     };
-  }, [randomIndex]);
+  }, [randomIndex, setPeekaboo]);
 
   const sectionsRef = useRef(null);
 
@@ -83,26 +75,52 @@ function Peekaboo() {
     }
   };
 
-  return (
-    <div className={S.component}>
-      {sections.map((section, index) => {
-        const idx = index + 1;
-        const styles = { backgroundColor: `var(--purple-${idx}00)` };
+  const renderPeekaboo = (idx) =>
+    idx === randomIndex ? (
+      <span ref={peekabooRef} className={S.peekaboo}>
+        👻
+      </span>
+    ) : null;
 
-        return (
-          <section
-            key={index}
-            ref={collectSections.bind(null, index)}
-            className={S.section}
-            style={styles}
-          >
-            {idx}
-            {renderPeekaboo(idx)}
-          </section>
-        );
-      })}
+  const { inView, targetRef, rootRef } = useInView();
+
+  return (
+    <div>
+      <p>{inView ? 'IN' : 'OUT'}</p>
+      <div ref={rootRef} className={S.component}>
+        {sections.map((section, index) => {
+          const idx = index + 1;
+          const styles = { backgroundColor: `var(--purple-${idx}00)` };
+          return (
+            <section
+              key={index}
+              ref={collectSections.bind(null, index)}
+              className={S.section}
+              style={styles}
+            >
+              {idx}
+              {renderPeekaboo(idx)}
+            </section>
+          );
+        })}
+        <div ref={targetRef} style={boxStyles}>
+          {inView ? 'IN' : 'OUT'}
+        </div>
+      </div>
     </div>
   );
 }
 
 export default Peekaboo;
+
+const boxStyles = {
+  blockSize: 400,
+  inlineSize: '100%',
+  background: 'red',
+  display: 'grid',
+  placeContent: 'center',
+  color: 'white',
+  fontSize: 24,
+  fontWeight: 800,
+  textTransform: 'uppercase',
+};

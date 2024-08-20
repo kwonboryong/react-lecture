@@ -1,42 +1,20 @@
 import { useState } from 'react';
-import ClockOnOff from './components/ClockOnOff';
-import PrintMousePosition from './components/PrintMousePosition';
-import UselessCheckbox from './components/UselessCheckbox';
-import S from './style.module.css';
+import { Outlet } from 'react-router-dom';
 import useDocumentTitle from '@/hooks/useDocumentTitle';
-
-const SUBJECTS = {
-  MOUSE: '마우스 위치 추적',
-  CLOCK: '시계 ON/OFF',
-  CHECKBOX: '쓸모없는 체크박스',
-};
+import NavLink from './components/NavLink';
+import S from './style.module.css';
 
 function EffectSyncAndCleanup() {
   useDocumentTitle('이펙트 동기화 & 정리');
 
-  const [subject, setSubject] = useState(SUBJECTS.MOUSE);
-
   const [isClockOn, setIsClockOn] = useState(false);
 
-  let renderSubjectComponent = null;
+  const handleToggle = () => setIsClockOn((s) => !s);
 
-  switch (subject) {
-    default:
-    case SUBJECTS.MOUSE:
-      renderSubjectComponent = <PrintMousePosition />;
-      break;
-    case SUBJECTS.CLOCK:
-      renderSubjectComponent = (
-        <ClockOnOff isOn={isClockOn} onToggle={() => setIsClockOn((s) => !s)} />
-      );
-      break;
-    case SUBJECTS.CHECKBOX:
-      renderSubjectComponent = <UselessCheckbox />;
+  const outletContextValue = {
+    isOn: isClockOn,
+    onToggle: handleToggle
   }
-
-  const selectSubject = (subject) => () => setSubject(subject);
-
-  const getActiveClassName = (key) => (key === subject ? S.active : '');
 
   return (
     <main id="page">
@@ -52,30 +30,14 @@ function EffectSyncAndCleanup() {
       </div>
 
       <nav className={S.nav}>
-        <button
-          type="button"
-          className={getActiveClassName(SUBJECTS.MOUSE)}
-          onClick={selectSubject(SUBJECTS.MOUSE)}
-        >
+        <NavLink to="" end>
           마우스 위치 추적
-        </button>
-        <button
-          type="button"
-          className={getActiveClassName(SUBJECTS.CLOCK)}
-          onClick={selectSubject(SUBJECTS.CLOCK)}
-        >
-          시계 ON/OFF
-        </button>
-        <button
-          type="button"
-          className={getActiveClassName(SUBJECTS.CHECKBOX)}
-          onClick={selectSubject(SUBJECTS.CHECKBOX)}
-        >
-          쓸모없는 체크박스
-        </button>
+        </NavLink>
+        <NavLink to="clock">시계 ON/OFF</NavLink>
+        <NavLink to="useless-checkbox">쓸모없는 체크박스</NavLink>
       </nav>
 
-      {renderSubjectComponent}
+      <Outlet context={outletContextValue} />
     </main>
   );
 }

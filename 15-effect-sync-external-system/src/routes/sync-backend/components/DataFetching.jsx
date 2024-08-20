@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { exact, string } from 'prop-types';
 import S from './DataFetching.module.css';
 
-const ENDPOINT = '//yamoo9.pockethost.io/api/collections/olive_oil/records';
+const ENDPOINT = '/kwonboryong.pockethost.io/api/collections/notes/records';
 
 function DataFetching() {
   // const [isLoading, setIsLoading] = useState(false);
@@ -60,6 +60,8 @@ function DataFetching() {
           data: responseData,
           isLoading: false,
         }));
+
+
       } catch (error) {
         if (!(error instanceof DOMException)) {
           // setError(error);
@@ -86,6 +88,7 @@ function DataFetching() {
     };
   }, []);
 
+  
   if (state.isLoading) {
     return <LoadingMessage />;
   }

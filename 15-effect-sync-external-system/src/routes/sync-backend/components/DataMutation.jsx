@@ -1,12 +1,3 @@
-// --------------------------------------------------------------------------
-// ✅ 데이터 뮤테이션
-// --------------------------------------------------------------------------
-// - [x] PocketBase 백엔드 솔루션을 서버로 사용합니다.
-// - [x] 이벤트를 사용해 Promise 또는 Async / await 방법으로 데이터 뮤테이션을 요청합니다.
-// - [ ] 데이터 뮤테이션 요청 응답이 성공인 경우, 리액트 앱 화면을 업데이트 합니다.
-// - [ ] 데이터 뮤테이션 요청 응답에 문제가 발생한 경우, 오류 메시지를 렌더링합니다.
-// --------------------------------------------------------------------------
-
 import {
   createNote,
   deleteNote,
@@ -18,56 +9,84 @@ import S from './DataMutation.module.css';
 import { useRef } from 'react';
 
 function DataMutation() {
+
+  // 폼 요소에 대한 참조를 저장하는 useRef 훅
   const formRef = useRef(null);
 
+  // 모든 노트 읽기 함수 ---------------------
   const handleReadNotes = async () => {
+    // readNotes 함수를 호출하여 모든 노트를 읽어옴
     const responseData = await readNotes();
+
+    // 읽어온 데이터를 콘솔에 출력
     console.log(responseData);
   };
 
+
+  // 새 노트 생성 함수 ---------------------
   const handleCreate = async () => {
-    // 폼 요소에 접근 => 폼 데이터 객체 생성
+    // 폼 요소에 접근하여 FormData 객체를 생성
     const formElement = formRef.current;
     const formData = new FormData(formElement);
 
-    // 폼 데이터의 입력 값 가져오기
+    // 폼 데이터에서 입력 값을 가져옴
     const title = formData.get('title');
     const description = formData.get('description');
 
-    // 서버에 요청 전송할 새 노트 객체 생성
+
+    // 새 노트 객체 생성
     const newNote = { title, description };
 
-    // 서버(외부 시스템) 요청/응답
+    // createNote 함수를 호출하여 새 노트를 서버에 전송
     const responseData = await createNote(newNote);
+
+    // 서버 응답 데이터를 콘솔에 출력
     console.log(responseData);
 
-    // 응답이 성공하면 폼 초기화
+    // 응답이 성공하면 폼을 초기화
     formElement.reset();
   };
 
+
+  // 특정 ID의 노트 읽기 함수 ---------------------
   const handleReadNoteOne = async () => {
+    // readNoteOne 함수를 호출하여 특정 노트의 데이터를 읽어옴
     const responseData = await readNoteOne('i395bxkg0hqg9d1');
+
+    // 읽어온 데이터를 콘솔에 출력
     console.log(responseData);
   };
 
+
+  // 노트 데이터 수정 함수 ---------------------
   const handleEditNote = async () => {
+    // 수정할 노트의 ID와 수정된 내용을 포함하는 객체 생성
     const editNoteId = 'i395bxkg0hqg9d1';
     const editNote = {
       id: editNoteId,
-      title: '오늘도 내일도 화이팅! 🥹',
-      // description: '리액트 짱 재밌다~?!',
+      title: '오늘도 내일도 화이팅! 🥹', // 새 제목
+      // description: '리액트 짱 재밌다~?!', // 새로운 설명 (주석 처리됨)
     };
 
+    // updateNote 함수를 호출하여 노트 데이터를 수정
     const responseData = await updateNote(editNote);
+    // 서버 응답 데이터를 콘솔에 출력
     console.log(responseData);
   };
 
+
+  // 노트 데이터 삭제 함수 ---------------------
   const handleDeleteNote = async () => {
+    // 삭제할 노트의 ID
     const deleteNoteId = 'i395bxkg0hqg9d1';
+
+    // deleteNote 함수를 호출하여 노트를 삭제
     await deleteNote(deleteNoteId);
-    // 노티피케이션(알림) 표시하기
+
+    // 삭제 성공 알림 표시
     globalThis.alert('노트 삭제 성공!');
   };
+
 
   return (
     <div className={S.component}>
@@ -99,15 +118,19 @@ function DataMutation() {
         <button type="button" onClick={handleCreate}>
           노트 작성
         </button>
+
         <button type="button" onClick={handleReadNotes}>
           노트 읽기
         </button>
+
         <button type="button" onClick={handleReadNoteOne}>
           노트 데이터 하나 가져오기
         </button>
+
         <button type="button" onClick={handleEditNote}>
           노트 데이터 수정하기
         </button>
+        
         <button type="button" onClick={handleDeleteNote}>
           노트 데이터 삭제하기
         </button>

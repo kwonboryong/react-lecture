@@ -1,27 +1,34 @@
 import useDocumentTitle from '@/hooks/useDocumentTitle';
-import { getStorageData, setStorageData } from '@/utils';
-import { useId, useState } from 'react';
+import { useLocalStorage, useSessionStorage } from '@/hooks/useWebStorage';
+import { useId } from 'react';
 import S from './Counter.module.css';
 
 const COUNTER_COUNT = '@counter/count';
 const COUNTER_STEP = '@counter/step';
-const DOCUMENT_INITIAL_TITLE = '문서 제목 동기화';
 
 function Counter() {
   const id = useId();
 
-  const [count, setCount] = useState(() =>
-    getStorageData(COUNTER_COUNT, 0, 'session')
+  const [count, setCount, countMethods] = useLocalStorage(
+    COUNTER_COUNT,
+    0,
+    true
   );
 
-  // 파생된 상태 + 커스텀 훅
-  const documentTitle = `(${count}) ` + DOCUMENT_INITIAL_TITLE;
-  // documentTitle 값이 변경될 때마다 useDocumentTitle 훅 내부의 이펙트 함수 실행 됨
-  useDocumentTitle(documentTitle);
+  const {
+    setItem: setCountItem,
+    deleteItem: deleteCount,
+    allClear,
+  } = countMethods;
 
-  const [step, setStep] = useState(() =>
-    getStorageData(COUNTER_STEP, 1, 'session')
+  useDocumentTitle(`(${count}) 문서 제목 동기화`);
+
+  const [step, setStep, stepControls] = useSessionStorage(
+    COUNTER_STEP,
+    1,
+    true
   );
+  const { setItem: setStepItem, deleteItem: deleteStep } = stepControls;
 
   const handleDecrease = () => {
     let nextCount = count - step;
@@ -38,8 +45,8 @@ function Counter() {
   };
 
   const handleSaveToStorage = () => {
-    setStorageData(COUNTER_COUNT, count, 'session');
-    setStorageData(COUNTER_STEP, step, 'session');
+    setCountItem(count);
+    setStepItem(step);
   };
 
   const isDisabled = count <= 1;
@@ -49,7 +56,16 @@ function Counter() {
       <div className={S.component}>
         <div style={{ marginBlockEnd: 20 }}>
           <button type="button" onClick={handleSaveToStorage}>
-            이벤트로 웹 스토리지 동기화
+            카운트, 스탭 웹 스토리지 저장
+          </button>
+          <button type="button" onClick={deleteCount}>
+            웹 스토리지에 저장된 카운트 삭제
+          </button>
+          <button type="button" onClick={deleteStep}>
+            웹 스토리지에 저장된 스탭 삭제
+          </button>
+          <button type="button" onClick={allClear}>
+            웹 스토리지 데이터 모두 삭제
           </button>
         </div>
 
