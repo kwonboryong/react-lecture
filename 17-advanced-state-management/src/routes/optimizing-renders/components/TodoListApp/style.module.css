@@ -1,0 +1,203 @@
+.TodoListApp {
+  --theme-color: #562ec6;
+  --focus-color: #fddf37;
+  --start-color: color-mix(in srgb, var(--theme-color) 100%, var(--white, #fff) 50%);
+  --end-color: color-mix(in srgb, var(--theme-color) 100%, var(--black, #000) 50%);
+  --text-color: var(--white, #fff);
+  --rounded-full: 9999px;
+
+  display: flex;
+  flex-flow: column;
+  gap: 8px;
+  inline-size: 320px;
+  border-radius: 36px;
+  padding: 24px;
+  background: linear-gradient(to right bottom, var(--start-color), var(--end-color));
+  color: var(--text-color);
+
+  * {
+    box-sizing: border-box;
+    font-family: "Pretendard-Regular";
+  }
+}
+
+.TodoList {
+  list-style: '';
+  margin-block: 0;
+  padding-inline-start: 0 !important;
+  display: flex;
+  flex-flow: column;
+  gap: 8px;
+}
+
+.ThemeSwitcher {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-block-end: 8px;
+
+  input {
+    cursor: pointer;
+    appearance: none;
+    inline-size: 32px;
+    block-size: 34px;
+    border: none;
+    background-color: transparent;
+    border-radius: var(--rounded-full);
+    filter: drop-shadow(0 0 0.5px var(--white, #fff));
+
+    &:focus {
+      outline: 2px solid var(--focus-color);
+    }
+
+    &::-webkit-color-swatch {
+      border-radius: var(--rounded-full);
+      border: none;
+    }
+  }
+
+  ul {
+    list-style: '';
+    margin-block: 0;
+    padding-inline-start: 0 !important;
+    display: flex;
+    flex-flow: row;
+    gap: 8px;
+  }
+
+  button {
+    border: 0;
+    background-color: transparent;
+    color: inherit;
+    font-weight: 600;
+    font-size: 14px;
+
+    color: color-mix(in srgb, var(--theme-color) 40%, var(--black, #000) 70%);
+
+    &:focus-visible {
+      outline: 2px solid var(--focus-color);
+    }
+
+    &.active {
+      color: color-mix(in srgb, var(--theme-color) 10%, var(--white, #fff) 100%);
+    }
+  }
+}
+
+.AddTodo {
+  --todo-color: color-mix(in srgb, var(--theme-color) 100%, var(--black, #000) 80%);
+  --todo-border-color: color-mix(in srgb, var(--theme-color) 100%, var(--white, #fff) 100%);
+  --button-color: color-mix(in srgb, var(--todo-color) 100%, var(--white, #fff) 20%);
+  --todo-border-color: color-mix(in srgb, var(--button-color) 100%, var(--white, #fff) 30%);
+
+  display: flex;
+  inline-size: 100%;
+  gap: 12px;
+
+  border: 0.5px solid var(--todo-border-color);
+  border-radius: var(--rounded-full);
+  padding: 8px;
+
+  background-color: var(--todo-color);
+
+  input {
+    flex: 1;
+    inline-size: 80%;
+    background-color: transparent;
+    border: 0;
+    padding-inline: 8px;
+    color: inherit;
+
+    &:focus {
+      outline: 0;
+    }
+
+    &::placeholder {
+      color: #fff7;
+    }
+  }
+
+  button {
+    border: 0.5px solid var(--todo-border-color);
+    border-radius: var(--rounded-full);
+    padding: 6px 12px;
+    background-color: var(--button-color);
+    color: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--focus-color);
+    }
+  }
+}
+
+.Todo {
+  --size: 24px;
+  --limit-shadow-color: color-mix(in srgb, var(--focus-color) 100%, var(--white, #fff) 60%);
+
+  label {
+    --label-background-color: color-mix(in srgb, var(--theme-color) 100%, var(--black, #000) 45%);
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    border-radius: var(--rounded-full);
+    padding: 12px;
+    background-color: var(--label-background-color);
+
+    &:focus-within {
+      outline: 2px solid var(--focus-color);
+    }
+
+    .done {
+      overflow: hidden;
+      display: grid;
+      place-content: center;
+      block-size: var(--size);
+      inline-size: var(--size);
+      border-radius: var(--rounded-full);
+
+
+      input {
+        block-size: 26px;
+        inline-size: 26px;
+
+        &:checked {
+          accent-color: var(--focus-color);
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .do {
+      flex: 1;
+
+      &.checked {
+        text-decoration: line-through;
+      }
+    }
+
+    .limit {
+      display: grid;
+      place-content: center;
+      block-size: var(--size);
+      inline-size: var(--size);
+      border-radius: var(--rounded-full);
+      background-color: var(--focus-color);
+      color: var(--black, #000);
+      font-size: 12px;
+      font-weight: 600;
+      box-shadow: inset 0 0 6px var(--limit-shadow-color), 0 0 2px var(--limit-shadow-color);
+    }
+  }
+}

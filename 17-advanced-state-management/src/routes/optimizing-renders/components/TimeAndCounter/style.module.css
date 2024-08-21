@@ -1,0 +1,26 @@
+.component {
+  display: flex;
+  flex-flow: column;
+  gap: 12px;
+  align-items: start;
+
+  .button {
+    opacity: 0.9;
+    border: 0;
+    border-radius: var(--rounded-full);
+    padding-inline: 12px;
+    font-size: 12px;
+    font-weight: 800;
+    background-color: var(--accent-color);
+    color: var(--white);
+
+    &:hover:not(:disabled) {
+      opacity: 1;
+    }
+  }
+
+  .group {
+    display: flex;
+    gap: 8px;
+  }
+}

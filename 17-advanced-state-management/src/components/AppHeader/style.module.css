@@ -1,0 +1,44 @@
+.component {
+  display: flex;
+  justify-content: space-between;
+  block-size: 20px;
+  padding-block: 20px;
+
+  .homeLink {
+    --size: 36px;
+    display: grid;
+    place-content: center;
+    font-size: 32px;
+    color: var(--accent-color);
+    block-size: var(--size);
+    inline-size: var(--size);
+    margin-inline-start: 20px;
+    padding: 0;
+    transition: all 0.2s ease-in-out;
+
+    &:focus {
+      outline: 0;
+      scale: 1.4;
+      rotate: 2turn;
+    }
+  }
+
+  .userInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    block-size: 32px;
+
+    margin-inline-end: 20px;
+    font-size: 13px;
+    color: var(--accent-color);
+
+    img {
+      --size: 32px;
+      block-size: var(--size);
+      inline-size: var(--size);
+      border-radius: var(--rounded-full);
+      object-fit: cover;
+    }
+  }
+}

@@ -1,0 +1,70 @@
+.component {
+  position: relative;
+
+  display: flex;
+  flex-flow: column;
+  gap: 8px;
+  inline-size: 100%;
+
+  &:focus-within,
+  &.inputed {
+    label {
+      translate: 0 -150%;
+      font-size: 12px;
+    }
+
+    input {
+      color: var(--accent-color);
+      padding-inline-start: 0;
+    }
+  }
+
+  label {
+    position: absolute;
+    top: 50%;
+    translate: 0 -22%;
+    font-size: 13px;
+    transition: all 0.2s ease-out;
+    color: var(--accent-color);
+  }
+
+  input {
+    flex: 1;
+    padding: 20px 6px 6px;
+    border: 0;
+    padding-inline-start: 100px;
+    padding-block-end: 8px;
+    border-block-end: 0.5px solid currentColor;
+    transition: all 0.2s ease-out;
+    color: var(--gray-500);
+    font-size: 13px;
+
+    &:focus {
+      outline: none;
+      color: var(--accent-color);
+    }
+  }
+
+  .visibleButton {
+    --size: 24px;
+
+    position: absolute;
+    right: 0;
+    top: 50%;
+    translate: 0 -30%;
+    display: grid;
+    place-content: center;
+    block-size: var(--size);
+    inline-size: var(--size);
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    color: var(--accent-color);
+    transition: all 0.2s ease-in-out;
+
+    &:focus {
+      outline: 0;
+      scale: 1.5;
+    }
+  }
+}

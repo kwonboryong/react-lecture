@@ -1,0 +1,12 @@
+.component {
+  display: flex;
+  flex-flow: column;
+  align-items: start;
+  gap: 20px;
+  inline-size: 320px;
+
+  border: 4px double var(--accent-color);
+  border-radius: 12px;
+  padding: 12px 24px 20px;
+
+}

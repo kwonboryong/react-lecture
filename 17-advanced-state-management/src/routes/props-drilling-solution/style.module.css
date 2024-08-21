@@ -1,0 +1,17 @@
+.component {
+
+  .input {
+    border: 2px solid var(--gray-300);
+    border-radius: 4px;
+    padding: 4px;
+    color: var(--accent-color);
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      border-color: currentColor;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+.component {
+
+  .layout {
+    display: flex;
+    gap: 12px;
+  }
+}

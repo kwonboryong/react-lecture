@@ -1,0 +1,40 @@
+.component {
+
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+
+  .output {
+    user-select: none;
+    font-size: 14px;
+    font-weight: 300;
+    inline-size: 2rem;
+    text-align: center;
+    color: var(--accent-color);
+  }
+
+  .group {
+    display: inline-flex;
+    flex-flow: column;
+    align-items: center;
+  }
+
+  .button {
+    user-select: none;
+    border: 0;
+    color: #999;
+    padding: 0;
+    block-size: 14px;
+    inline-size: 14px;
+    font-size: 12px;
+    background-color: transparent;
+    opacity: 0.75;
+
+    &:hover:not(:disabled) {
+      opacity: 1;
+      background-color: #ededed;
+      color: var(--accent-color);
+    }
+  }
+}

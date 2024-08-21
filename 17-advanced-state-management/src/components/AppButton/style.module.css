@@ -1,0 +1,35 @@
+.component {
+  display: flex;
+  inline-size: 100%;
+  gap: 4px;
+
+  .icon {
+    display: inline-flex;
+    color: var(--white);
+    font-size: 16px;
+  }
+
+  button {
+    opacity: 0.9;
+    flex: 1;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: var(--rounded-md);
+    padding: 12px 32px;
+    background-color: var(--accent-color);
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 600;
+
+    &:hover:not(:disabled) {
+      opacity: 1;
+    }
+
+    &:disabled {
+      background-color: color-mix(in srgb, var(--accent-color) 20%, var(--gray-300) 100%);
+    }
+  }
+}
