@@ -39,28 +39,28 @@ export default {
     accent: color.yellow[500],
 
     GrandParent: {
-      background: color.teal[900],
-      label: color.teal[700],
+      background: color.pink[900],
+      label: color.pink[700],
     },
 
     Parent: {
-      background: color.teal[800],
-      label: color.teal[600],
+      background: color.pink[800],
+      label: color.pink[600],
     },
 
     Child: {
-      background: color.teal[700],
-      label: color.teal[500],
+      background: color.pink[700],
+      label: color.pink[500],
     },
 
     GrandChild: {
-      background: color.teal[600],
-      label: color.teal[400],
+      background: color.pink[600],
+      label: color.pink[400],
     },
 
     TodoListApp: {
-      themeColor: color.teal[700],
-      focusColor: color.teal[500],
+      themeColor: color.pink[700],
+      focusColor: color.pink[500],
     },
   },
 };

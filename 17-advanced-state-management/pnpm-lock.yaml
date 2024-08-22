@@ -20,6 +20,9 @@ importers:
       motion:
         specifier: 10.18.0
         version: 10.18.0
+      pocketbase:
+        specifier: 0.21.4
+        version: 0.21.4
       react:
         specifier: 18.3.1
         version: 18.3.1
@@ -1168,6 +1171,9 @@ packages:
 
   picocolors@1.0.1:
     resolution: {integrity: sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==}
+
+  pocketbase@0.21.4:
+    resolution: {integrity: sha512-WJHyaqdAt95JgZ1OCRD099+DST4IIG0M/jMrCckWYDSN/6ocp61qsz7m6h0xI0J2N79ScBljceEC0fFAaQrrAw==}
 
   possible-typed-array-names@1.0.0:
     resolution: {integrity: sha512-d7Uw+eZoloe0EHDIYoe+bQ5WXnGMOpmiZFTuMWCwpjzzkL2nTjcKiAk4hh8TjnGye2TwWOk3UXucZ+3rbmBa8Q==}
@@ -2633,6 +2639,8 @@ snapshots:
   path-parse@1.0.7: {}
 
   picocolors@1.0.1: {}
+
+  pocketbase@0.21.4: {}
 
   possible-typed-array-names@1.0.0: {}
 

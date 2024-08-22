@@ -1,12 +1,10 @@
-import { object } from 'prop-types';
 import S from './style.module.css';
 import GrandChild from './GrandChild';
+import { useTheme } from '@/contexts/theme';
 
-Child.propTypes = {
-  theme: object,
-};
+function Child() {
+  const { theme } = useTheme();
 
-function Child({ theme }) {
   const {
     Child: { background, label },
   } = theme;
@@ -23,9 +21,9 @@ function Child({ theme }) {
   return (
     <div className={S.box} style={boxStyles}>
       <strong className={S.label} style={labelStyles}>
-        Parent
+        Child
       </strong>
-      <GrandChild theme={theme} />
+      <GrandChild />
     </div>
   );
 }

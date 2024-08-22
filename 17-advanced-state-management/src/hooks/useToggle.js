@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import useStateWithCallback from './useStateWithCallback';
 
 function useToggle(isOn = false, callback) {
@@ -9,7 +10,9 @@ function useToggle(isOn = false, callback) {
     return isOn;
   }, callback);
 
-  return [isToggle, setIsToggle];
+  const value = useMemo(() => [isToggle, setIsToggle], [isToggle, setIsToggle]);
+
+  return value;
 }
 
 export default useToggle;

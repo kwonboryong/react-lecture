@@ -1,12 +1,10 @@
-import { object } from 'prop-types';
 import S from './style.module.css';
+import { useTheme } from '@/contexts/theme';
 import Parent from './Parent';
 
-GrandParent.propTypes = {
-  theme: object,
-};
+function GrandParent() {
+  const { theme } = useTheme();
 
-function GrandParent({ theme }) {
   const {
     GrandParent: { background, label },
   } = theme;
@@ -25,7 +23,7 @@ function GrandParent({ theme }) {
       <strong className={S.label} style={labelStyles}>
         Grand Parent
       </strong>
-      <Parent theme={theme} />
+      <Parent />
     </div>
   );
 }
