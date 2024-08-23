@@ -1,23 +1,37 @@
-const ACTION_TYPE = {
-  SIGN_IN: 'log in',
-  SIGN_OUT: 'log out',
+export const INITIAL_AUTH_INFO = {
+  user: null,
+  token: null,
 };
 
-export const signInAction = (payload) => ({
-  type: ACTION_TYPE.SIGN_IN,
-  payload,
+const ACTION_TYPES = {
+  SET: '@auth/set',
+  RESET: '@auth/reset',
+};
+
+export const setAuth = (authInfo) => ({
+  type: ACTION_TYPES.SET,
+  payload: authInfo,
 });
 
-export const signOutAction = () => ({
-  type: ACTION_TYPE.SIGN_OUT,
+export const resetAuth = () => ({
+  type: ACTION_TYPES.RESET,
 });
 
-export default function authReducer(state, action) {
-  if (action.type === ACTION_TYPE.SIGN_IN) {
-    return action.payload;
-  }
+const authReducer = (state, action) => {
+  switch (action.type) {
+    case ACTION_TYPES.SET: {
+      const authInfo = action.payload; 
 
-  if (action.type === ACTION_TYPE.SIGN_OUT) {
-    return null;
+      return { ...state, ...authInfo };
+    }
+
+    case ACTION_TYPES.RESET: {
+      return INITIAL_AUTH_INFO;
+    }
+
+    default: 
+      return state;
   }
-}
+};
+
+export default authReducer;

@@ -1,9 +1,9 @@
 import clsx from 'clsx';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { navigationItems } from '@/router';
 
-export function AppNav() {
+function AppNav() {
   const [items] = useState(navigationItems);
 
   const baseNavClasses =
@@ -37,3 +37,5 @@ export function AppNav() {
     </nav>
   );
 }
+
+export default memo(AppNav);

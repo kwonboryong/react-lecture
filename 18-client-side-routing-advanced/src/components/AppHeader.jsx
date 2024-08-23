@@ -1,7 +1,8 @@
+import { memo } from 'react';
 import { IoLogoReact } from 'react-icons/io5';
 import { NavLink } from 'react-router-dom';
 
-export function AppHeader() {
+function AppHeader() {
   return (
     <header className="flex justify-center py-3 bg-white border-b border-b-indigo-500/10">
       <NavLink
@@ -16,3 +17,5 @@ export function AppHeader() {
     </header>
   );
 }
+
+export default memo(AppHeader);

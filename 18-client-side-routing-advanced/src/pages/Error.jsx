@@ -1,7 +1,7 @@
 import { AppFooter, AppHeader, AppNav } from '@/components';
 import { useRouteError } from 'react-router-dom';
 
-export function ErrorPage() {
+function ErrorPage() {
   const { status, statusText, data } = useRouteError();
 
   return (
@@ -28,3 +28,5 @@ export function ErrorPage() {
     </div>
   );
 }
+
+export default ErrorPage;

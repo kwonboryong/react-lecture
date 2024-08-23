@@ -1,5 +1,6 @@
 import colors from 'tailwindcss/colors';
 import { number, string } from 'prop-types';
+import { memo } from 'react';
 
 const { indigo } = colors;
 
@@ -9,7 +10,7 @@ AppSpinner.propTypes = {
   duration: number,
 };
 
-export function AppSpinner({
+function AppSpinner({
   color = indigo[700],
   size = 36,
   duration = 1.2,
@@ -62,3 +63,5 @@ export function AppSpinner({
     </svg>
   );
 }
+
+export default memo(AppSpinner);

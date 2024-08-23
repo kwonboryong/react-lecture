@@ -1,0 +1,25 @@
+.component {
+  --ratio: 3;
+
+  @apply rounded-full border-2 border-solid border-accent;
+
+  display: block;
+  block-size: 20px;
+  aspect-ratio: var(--ratio) / 1;
+  margin-block: 2px;
+  padding: 2px;
+  background: transparent;
+  cursor: pointer;
+  box-sizing: content-box;
+  outline-offset: 6px;
+  transition: inherit;
+
+  .ball {
+    @apply rounded-full bg-accent;
+
+    display: block;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    transition: background 0.3s ease-in-out;
+  }
+}

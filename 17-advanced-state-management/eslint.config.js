@@ -37,7 +37,7 @@ export default [
       'react/jsx-no-target-blank': 'warn',
       'react/prop-types': 'warn',
       'react-refresh/only-export-components': [
-        'warn',
+        'off',
         { allowConstantExport: true },
       ],
     },

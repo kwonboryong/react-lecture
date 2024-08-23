@@ -1,8 +1,8 @@
 import { useCallback, useLayoutEffect, useState } from 'react';
 
-const getLocalStorageData = (key) => {
+const getLocalStorageData = (key, initialValue = null) => {
   const data = window.localStorage.getItem(key);
-  return data ? JSON.parse(data) : null;
+  return data ? JSON.parse(data) : initialValue;
 };
 
 const setLocalStorageData = (key, value) => {
@@ -12,9 +12,10 @@ const setLocalStorageData = (key, value) => {
   }
 };
 
-/** @type {(key: string, initialValue: any)} */
 function useLocalStorage(key, initialValue, autoSave = false) {
-  const [data, setData] = useState(() => getLocalStorageData(key));
+  const [data, setData] = useState(() =>
+    getLocalStorageData(key, initialValue)
+  );
 
   const saveData = useCallback(
     (value) => {
@@ -29,7 +30,7 @@ function useLocalStorage(key, initialValue, autoSave = false) {
     }
   }, [key, autoSave, data, saveData]);
 
-  return [data, setData, saveData];
+  return { data, setData, saveData };
 }
 
 export default useLocalStorage;

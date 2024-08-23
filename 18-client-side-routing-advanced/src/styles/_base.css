@@ -1,4 +1,10 @@
 @layer base {
+
+  html {
+    /* overflow-y: visible; */
+    min-block-size: 100.1vh;
+  }
+
   [hidden] {
     display: none !important;
   }
@@ -25,7 +31,8 @@
     @apply text-slate-700 text-base leading-normal;
   }
 
-  #page {
-    text-align: center;
+  button {
+    @apply disabled:cursor-not-allowed;
   }
+
 }

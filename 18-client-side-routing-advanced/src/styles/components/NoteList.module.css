@@ -1,0 +1,40 @@
+.NoteList {
+
+  @apply flex flex-col items-center gap-5 w-full max-w-lg mx-auto;
+
+  * {
+    @apply transition-all duration-300;
+  }
+
+  li {
+    @apply relative overflow-hidden rounded-xl border-4 border-slate-300 hover:border-accent/90 focus-within:border-accent/80;
+
+    img {
+      @apply relative -z-0 border-solid w-96 aspect-auto rounded-lg saturate-[5%] hover:saturate-[80%];
+    }
+
+    h2 {
+      @apply absolute text-white text-base font-medium drop-shadow-md shadow-black bottom-5 left-6;
+    }
+  }
+
+}
+
+.back {
+  @apply mb-8 text-accent text-xl border border-transparent border-solid p-2 rounded-full;
+  @apply hover:bg-accent/10 focus:bg-accent/10;
+}
+
+.NoteDetail {
+  img {
+    @apply rounded-xl w-full max-w-xl mb-8 border-4 border-slate-200;
+  }
+
+  h1 {
+    @apply text-center;
+  }
+
+  p {
+    @apply max-w-xl leading-normal text-slate-500;
+  }
+}

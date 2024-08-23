@@ -6,3 +6,13 @@
 
 @import "tailwindcss/utilities";
 @import "./_utilities.css";
+
+@import './_page.css';
+
+@layer base {
+
+  /* 참고: https://tailwindcss.com/docs/customizing-colors#using-css-variables */
+  :root {
+    --accent-color: 67 56 202;
+  }
+}

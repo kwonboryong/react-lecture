@@ -1,13 +1,12 @@
-import { RouterProvider } from 'react-router-dom';
-import Fallback from '@/pages/Fallback';
 import router from '@/router';
+import { RouterProvider } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
   return (
-    <div className="App">
-      <Fallback />
+    <HelmetProvider>
       <RouterProvider router={router} />
-    </div>
+    </HelmetProvider>
   );
 }
 

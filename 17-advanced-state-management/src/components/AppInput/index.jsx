@@ -1,7 +1,8 @@
 import clsx from 'clsx';
-import { bool, string } from 'prop-types';
 import { useId, useState } from 'react';
+import { bool, func, string } from 'prop-types';
 import { VscEye, VscEyeClosed } from 'react-icons/vsc';
+import { throttle } from '@/utils';
 import S from './style.module.css';
 
 AppInput.propTypes = {
@@ -10,6 +11,7 @@ AppInput.propTypes = {
   password: bool,
   passwordConfirm: bool,
   isHiddenLabel: bool,
+  onInput: func,
 };
 
 function AppInput({
@@ -17,6 +19,7 @@ function AppInput({
   email = false,
   password = false,
   isHiddenLabel = false,
+  onInput,
   ...restProps
 }) {
   const id = useId();
@@ -34,7 +37,11 @@ function AppInput({
 
   const [inputValue, setInputValue] = useState('');
 
-  const handleInput = (e) => setInputValue(e.target.value);
+  const handleInput = throttle((e) => {
+    const userInputValue = e.target.value;
+    setInputValue(userInputValue);
+    onInput?.(userInputValue);
+  }, 600);
 
   const isInputed = inputValue.trim().length > 0;
 
@@ -82,7 +89,7 @@ function AppInput({
       <input
         type={type}
         id={id}
-        value={inputValue}
+        defaultValue={inputValue}
         onInput={handleInput}
         {...restProps}
       />

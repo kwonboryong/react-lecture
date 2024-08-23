@@ -23,6 +23,13 @@
     }
   }
 
+  .wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding-inline-end: 16px;
+  }
+
   .userInfo {
     display: flex;
     align-items: center;
@@ -37,6 +44,7 @@
       --size: 32px;
       block-size: var(--size);
       inline-size: var(--size);
+      border: 0.5px solid var(--accent-color);
       border-radius: var(--rounded-full);
       object-fit: cover;
     }

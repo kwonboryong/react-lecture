@@ -1,13 +1,24 @@
-import { Outlet } from 'react-router-dom';
-import { AppFooter, AppHeader, AppNav } from '@/components';
+import { Outlet, useNavigation } from 'react-router-dom';
+import { AppFooter, AppHeader, AppNav, AppSpinner } from '@/components';
 
 function RootLayout() {
+  const navigation = useNavigation();
+
+  const isLoading = navigation.state === 'loading';
+
   return (
-    <div className="Layout h-screen bg-indigo-50/30 flex flex-col">
+    <div className="h-screen bg-indigo-50/30 flex flex-col">
       <AppHeader />
       <AppNav />
       <main className="flex-1 m-4">
-        <Outlet />
+        {isLoading ? (
+          <AppSpinner
+            size={100}
+            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          />
+        ) : (
+          <Outlet />
+        )}
       </main>
       <AppFooter />
     </div>

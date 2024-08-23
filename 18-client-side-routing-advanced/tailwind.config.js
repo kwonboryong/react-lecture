@@ -1,9 +1,20 @@
+import colors from 'tailwindcss/colors';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        // 참고: https://tailwindcss.com/docs/customizing-colors#using-css-variables
+        accent: 'rgb(var(--accent-color) / <alpha-value>)',
+        planned: colors.slate[400],
+        ongoing: colors.teal[400],
+        done: colors.blue[400],
+      },
+    },
   },
+  // 참고: https://tailwindcss.com/docs/plugins
   plugins: [
     ({ addComponents, addUtilities }) => {
       addComponents({
