@@ -12,7 +12,7 @@ import { createStore, useStore } from 'zustand';
  * - 훅 함수 사용 규칙 위반을 방지합니다. 훅 대신 스토어 객체를 전달합니다.
  *
  * 단점
- * - 다소 복잡하고, 컨텍스트 설정이 함께 필요합니다.
+ * - 약간 복잡하고, 컨텍스트 설정이 함께 필요합니다.
  */
 
 const counterStore = createStore((set) => ({
@@ -23,8 +23,8 @@ const counterStore = createStore((set) => ({
 const counterContext = createContext(null);
 
 export function CounterProvider(props) {
-  const storeRef = useRef(counterStore); // { current: store { count, increment } }
-  return <counterContext.Provider value={storeRef.current} {...props} />;
+  const store = useRef(counterStore);
+  return <counterContext.Provider value={store.current} {...props} />;
 }
 
 // eslint-disable-next-line react-refresh/only-export-components

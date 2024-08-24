@@ -1,10 +1,12 @@
 import { memo } from 'react';
-import { useCountStore } from './@store';
+import { number } from 'prop-types';
 import S from './style.module.css';
 
-function CountOutput() {
-  const count = useCountStore((s) => s.count);
+CountOutput.propTypes = {
+  count: number.isRequired,
+};
 
+function CountOutput({ count }) {
   return <output className={S.output}>{count}</output>;
 }
 

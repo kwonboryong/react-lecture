@@ -43,10 +43,6 @@ import { configRoutes, getNavigationItems } from '@/utils';
 import RootLayout from '@/layouts/RootLayout';
 
 import HomePage from '@/pages/Home';
-// import {
-//   Component as NoteDetail,
-//   loader as noteDetailLoader,
-// } from '@/pages/Notes/NoteDetail';
 
 /**@type {import('react-router-dom').RouteObject[]} */
 const navigation = [
@@ -62,26 +58,25 @@ const navigation = [
     lazy: () => import('@/pages/KanbanBoard'),
   },
   {
-    text: '노트리스트',
+    text: '노트 리스트',
     path: '/notes',
-    lazy: () => import('@/pages/Notes/NoteList'),
-  },
-  {
-    text: '노트 디테일',
-    path: '/notes/:noteId',
-    display: false,
-    lazy: () => import('@/pages/Notes/NoteDetail'),
-  },
-  {
-    text: '노트 수정',
-    path: '/notes/:noteId/edit',
-    display: false,
-    lazy: () => import('@/pages/Notes/EditNote'), // Component, loader
-  },
-  {
-    text: '노트 추가',
-    path: '/notes/new',
-    lazy: () => import('@/pages/Notes/NewNote'),
+    children: [
+      {
+        index: true,
+        lazy: () => import('@/pages/NoteList'),
+      },
+      {
+        text: '노트 작성',
+        path: 'new',
+        lazy: () => import('@/pages/NoteList/NewNote'),
+      },
+      {
+        text: '개별 노트 상세',
+        display: false,
+        path: ':noteId/:noteTitle',
+        lazy: () => import('@/pages/NoteList/NoteDetail'),
+      },
+    ],
   },
 ];
 

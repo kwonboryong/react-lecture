@@ -1,8 +1,7 @@
 @layer base {
 
   html {
-    /* overflow-y: visible; */
-    min-block-size: 100.1vh;
+    min-block-size: 100.04vh;
   }
 
   [hidden] {

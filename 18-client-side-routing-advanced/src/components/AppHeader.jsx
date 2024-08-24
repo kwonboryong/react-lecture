@@ -1,6 +1,6 @@
 import { memo } from 'react';
-import { IoLogoReact } from 'react-icons/io5';
 import { NavLink } from 'react-router-dom';
+import { IoLogoReact } from 'react-icons/io5';
 
 function AppHeader() {
   return (
