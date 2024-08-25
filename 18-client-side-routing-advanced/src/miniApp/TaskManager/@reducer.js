@@ -1,3 +1,7 @@
+// reducer 함수와 관련된 액션 타입 및 액션 생성자
+
+// 액션 타입 정의
+// - 상태를 업데이트할 때 수행할 작업의 종류를 명시
 const ACTION_TYPES = {
   ADD_TASK: '태스크 추가',
   SET_TASK: '태스크 토글',
@@ -5,6 +9,9 @@ const ACTION_TYPES = {
   DELETE_TASK: '태스크 삭제',
 };
 
+
+// 액션 객체를 만드는 함수
+// 작업을 추가할 때 사용되는 액션 생성
 export const addTask = (nextStep) => ({
   type: ACTION_TYPES.ADD_TASK,
   payload: nextStep,
@@ -25,6 +32,9 @@ export const deleteTask = (deleteId) => ({
   payload: deleteId,
 });
 
+
+// 초기 목록
+// - 리듀서가 초기 상태로 사용할 기본 작업 목록
 export const INITIAL_TASKS = [
   {
     id: '374f637e-d27f-4aa3-acb4-a76b76a31d51',
@@ -40,8 +50,13 @@ export const INITIAL_TASKS = [
   },
 ];
 
+
+// reducer 함수
+// - useReducer 훅에 의해 호출되는 함수
+// - 현재 상태(state)와 액션(action)을 받아 새로운 상태를 반환
 export default function reducer(state, action) {
   switch (action.type) {
+    // 새로운 작업을 생성하여 상태에 추가
     case ACTION_TYPES.ADD_TASK: {
       const newTask = {
         id: crypto.randomUUID(),

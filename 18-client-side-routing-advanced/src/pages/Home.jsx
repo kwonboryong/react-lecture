@@ -19,6 +19,7 @@ function HomePage() {
           방법을 학습합니다.
         </p>
 
+        {/* ------------------------------------- */}
         <AppDivider />
 
         <h2 lang="en" className="uppercase">
@@ -29,7 +30,8 @@ function HomePage() {
 
         <Counter />
 
-        <AppDivider />
+        {/* ------------------------------------- */}
+        <AppDivider /> 
 
         <h2 lang="en" className="uppercase">
           Task Manager

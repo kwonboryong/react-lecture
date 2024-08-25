@@ -35,9 +35,7 @@
 // - 폼에 입력된 내용이 올바르고 가입한 사용자라면 로그인이 정상 처리됩니다.
 // - 로그인에 성공한 후, 바로 노트 리스트 페이지로 이동합니다.
 // - 로그인 사용자는 노트 작성, 수정, 삭제가 가능합니다.
-//
 // --------------------------------------------------------------------------
-
 import { createBrowserRouter } from 'react-router-dom';
 import { configRoutes, getNavigationItems } from '@/utils';
 import RootLayout from '@/layouts/RootLayout';

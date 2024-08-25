@@ -2,25 +2,57 @@ import { string } from 'prop-types';
 import useKanbanBoardStore from '../@store';
 import { TASKS } from '../@types';
 
+// 타입 검사
+Task.propTypes = {
+  id: string.isRequired,
+};
+
+// 상태 색상 클래스 결정 함수
+const getColorClassName = (status) => {
+  switch (status) {
+    case TASKS.planned:
+      return 'bg-planned';
+    case TASKS.ongoing:
+      return 'bg-ongoing';
+    case TASKS.done:
+      return 'bg-done';
+  }
+};
+
+// 추가된 작업 다이얼로그 컴포넌트
 function Task({ id }) {
+
+  // 작업 데이터 가져오기
+  // - useKanbanBoardStore 훅을 사용하여 Kanban 보드의 상태에서 해당 id를 가진 작업을 찾는다.
   const task = useKanbanBoardStore((state) =>
     state.tasks.find((task) => task.id === id)
   );
 
+  // 작업 삭제 함수 가져오기
+  // - deleteTask 함수를 Kanban 보드의 상태에서 가져옴
+  // - 이 함수는 작업을 삭제하는 데 사용
   const deleteTask = useKanbanBoardStore((state) => state.deleteTask);
 
+  // 작업 삭제 핸들러
   const handleDeleteTask = () => {
     deleteTask(id);
   };
 
+  // 드래그된 작업 설정 함수 가져오기
+  // - setDraggedTask 함수를 Kanban 보드의 상태에서 가져옴
+  // - 이 함수는 현재 드래그 중인 작업을 설정하는 데 사용
   const setDraggedTask = useKanbanBoardStore((state) => state.setDraggedTask);
 
+  // 삭제 버튼 레이블
   const buttonLabel = `${task.title} 삭제`;
+
 
   return (
     <div
       className="hover:cursor-move min-h-[4rem] rounded-md bg-white text-sm shadow-md shadow-slate-400/20 p-4"
       draggable
+      // 드래그 시작 시 호출
+      // - 드래그 효과를 설정하고 현재 작업을 드래그 중인 작업으로 설정
       onDragStart={(e) => {
         e.dataTransfer.dropEffect = 'move';
         setDraggedTask(id);
@@ -70,20 +102,5 @@ function Task({ id }) {
     </div>
   );
 }
-
-const getColorClassName = (status) => {
-  switch (status) {
-    case TASKS.planned:
-      return 'bg-planned';
-    case TASKS.ongoing:
-      return 'bg-ongoing';
-    case TASKS.done:
-      return 'bg-done';
-  }
-};
-
-Task.propTypes = {
-  id: string.isRequired,
-};
 
 export default Task;

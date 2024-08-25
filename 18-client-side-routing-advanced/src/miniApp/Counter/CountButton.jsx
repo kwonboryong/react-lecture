@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { func, node } from 'prop-types';
 import S from './style.module.css';
 
+// 타입 검사
 CountButton.propTypes = {
   children: node,
   onUpdate: func,

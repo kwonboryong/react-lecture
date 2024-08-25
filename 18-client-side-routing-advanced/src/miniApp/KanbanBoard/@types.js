@@ -6,4 +6,5 @@ export const TASKS = {
   done: 'DONE',
 };
 
+// 타입 검사
 export const taskTypes = oneOf(Object.values(TASKS)).isRequired;
