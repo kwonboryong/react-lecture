@@ -9,23 +9,32 @@ import { AUTH_KEY, useAuth } from '@/contexts/auth';
 import { setStorageData } from '@/utils';
 
 function SignInUser() {
+  // 페이지 제목 설정
   useDocumentTitle('사용자 로그인');
 
+  // 페이지 이동을 위한 navigate 함수
   const navigate = useNavigate();
+
+  // 인증 컨텍스트에서 setAuth를 가져옴
   const { setAuth } = useAuth();
 
+
+  // 로그인 폼 제출 시 실행될 함수
   const handleSignIn = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // 폼의 기본 제출 동작을 막음
 
     try {
+      // 폼 데이터 추출(이메일, 비번)
       const formData = new FormData(e.currentTarget);
 
       const email = formData.get('email');
       const password = formData.get('password');
 
+      // 사용자 로그인 함수(user.js) 호출 & 로그인
       const authData = await userSignIn(email, password);
 
       // 요청에 따른 응답 검토
+      // - 받은 사용자 정보와 토큰을 추출
       const { record: user, token } = authData;
       const authInfo = { user, token };
 
@@ -42,25 +51,30 @@ function SignInUser() {
     }
   };
 
+  // useImmer를 사용하여 formState 상태를 초기화
   const [formState, setFormState] = useImmer({
     email: '',
     password: '',
   });
 
+  // 이메일 입력 핸들러
   const handleEmailInput = (value) => {
     setFormState((draft) => {
       draft.email = value;
     });
   };
 
+  // 비밀번호 입력 핸들러
   const handlePasswordInput = (value) => {
     setFormState((draft) => {
       draft.password = value;
     });
   };
 
-  // 파생된 상태 변수
+  // formState에서 email과 password를 추출
   const { email, password } = formState;
+
+  // 입력값 유효성 검사를 위해 isDisable 설정
   const isDisable = email.trim().length === 0 || password.trim().length === 0;
 
   return (
